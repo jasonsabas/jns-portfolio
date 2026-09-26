@@ -1,0 +1,3137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- google analytics tracker -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DRGCD88DE8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-DRGCD88DE8');
+    </script>
+    <!-- google analytics tracker -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JNS Portfolio</title>
+
+    <!-- Standard favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/icon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/icon.ico">
+
+    <!-- iOS (Add to Home Screen) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/icon.ico">
+
+    <!-- Android Chrome -->
+    <link rel="icon" sizes="192x192" href="favicon/icon.ico">
+
+    <!-- Optional theme color -->
+    <meta name="theme-color" content="#002147">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #fafafa;
+            min-height: 100vh;
+        }
+
+        /* Header Navigation */
+        .header {
+            background: transparent !important;
+            padding: 20px 0 !important;
+            position: sticky !important;
+            top: 0 !important;
+            z-index: 1000 !important;
+            width: 100% !important;
+        }
+
+        .header-content {
+            max-width: 400px !important;
+            margin: 0 auto !important;
+            padding: 12px 20px !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            background: #fafafa !important;
+            opacity: 0.95;
+            border-radius: 30px !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+        }
+
+        .header nav {
+            display: flex !important;
+            gap: 25px !important;
+            align-items: center !important;
+        }
+
+        .header nav a {
+            text-decoration: none !important;
+            color: #4a5568 !important;
+            font-size: 16px !important;
+            font-weight: 500 !important;
+        }
+
+        /* CV Button - Above Dark Mode Toggle */
+        .cv-button {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #163A6B 0%, #070808 100%);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+            z-index: 9999;
+        }
+
+        .cv-button i {
+            color: #fafafa;
+            font-size: 26px;
+        }
+
+        .cv-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Dark mode CV button */
+        body.dark-mode .cv-button {
+            background: linear-gradient(135deg, #4a9eff 0%, #357abd 100%);
+        }
+
+        /* Mobile */
+        @media (max-width: 480px) {
+            .header-content {
+                max-width: calc(85% - 40px) !important;
+                padding: 15px 15px !important;
+            }
+
+            .header nav {
+                gap: 15px !important;
+            }
+
+            .header nav a {
+                font-size: 14px !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cv-button {
+                bottom: 90px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+            }
+
+            .cv-button i {
+                font-size: 22px;
+            }
+        }
+
+        .nav-header {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-header li {
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: color 0.3s;
+            color: #4A5568;
+        }
+
+        .nav-header li:hover {
+            color: #163A6B;
+        }
+
+        .nav-header li.active {
+            color: #163A6B;
+        }
+
+        /* About Me Sections */
+        .about-section {
+            max-width: 900px;
+            margin: 0px auto 40px;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #002147;
+            font-size: 40px;
+            font-weight: 1000;
+            margin-bottom: 20px;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .timeline-left {
+            text-align: right;
+        }
+
+        .timeline-company {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .timeline-date {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .timeline-connector {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 5px;
+        }
+
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 3px solid #002147;
+            background: #fafafa;
+            flex-shrink: 0;
+        }
+
+        .timeline-line {
+            width: 3px;
+            min-height: 160px;
+            background: #e0e0e0;
+            margin-top: 10px;
+        }
+
+        .timeline-item:last-child .timeline-line {
+            display: none;
+        }
+
+        .timeline-right {
+            text-align: left;
+        }
+
+        .timeline-role {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .timeline-desc {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Skills Banner */
+        .skills-banner {
+            /* background: linear-gradient(135deg, #002147 0%, #1ea7c5 100%); */
+            padding: 80px 40px;
+            margin: 0px auto 40px;
+            text-align: center;
+            color: #002147;
+        }
+
+        .skills-banner-title {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .skills-banner-subtitle {
+            font-size: 16px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .skills-circles {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            flex-wrap: wrap;
+        }
+
+        .skill-circle-item {
+            text-align: center;
+        }
+
+        .circle-progress {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin-bottom: 20px;
+        }
+
+        .circle-progress svg {
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg);
+        }
+
+        .circle-progress circle {
+            fill: none;
+            stroke-width: 10;
+            stroke-linecap: round;
+        }
+
+        .circle-progress circle:first-child {
+            /* stroke: #4A5568; */
+        }
+
+        .circle-progress circle:last-child {
+            stroke: #002147;
+            stroke-dasharray: 408;
+            stroke-dashoffset: 408;
+            /* Start at 0% (full offset) */
+            transition: stroke-dashoffset 1.5s ease;
+        }
+
+        .circle-percent {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .skill-label {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        /* Technologies Section */
+        .tech-main-title {
+            text-align: center;
+            font-size: 28px;
+            color: #4A5568;
+            margin-bottom: 20px;
+        }
+
+        .tools-title {
+            text-align: center;
+            color: #002147;
+            font-size: 40px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .tools-subtitle {
+            text-align: center;
+            font-size: 16px;
+            margin-bottom: 60px;
+            opacity: 0.95;
+        }
+
+        .tech-category {
+            margin-bottom: 60px;
+        }
+
+        .tech-category-title {
+            text-align: center;
+            color: #002147;
+            font-size: 24px;
+            margin: 0px;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .tech-item {
+            text-align: center;
+        }
+
+        .tech-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tech-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .tech-item p {
+            color: #4A5568;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 20px;
+            text-align: center;
+            min-height: calc(100vh - 200px);
+        }
+
+        .contact-title {
+            font-size: 48px;
+            color: #002147;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .contact-subtitle {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 60px;
+            max-width: 600px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .contact-card {
+            background: #fafafa;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #fafafa;
+        }
+
+        @media (max-width: 600px) {   
+            .contact-grid {
+                /* CHANGES: Sets grid to 1 column for screens 600px or less */
+                grid-template-columns: 2fr;
+                /* Optional: Reduce padding/margin for more space */
+                gap: 20px;
+            }
+
+            .contact-container {
+                /* Optional: Reduce top/bottom padding on mobile */
+                padding: 40px 10px;
+            }
+        }
+
+        .linkedin-icon {
+            background: linear-gradient(135deg, #163A6B 0%, #070808 100%);
+        }
+
+        .whatsapp-icon {
+            background: linear-gradient(135deg, #163A6B 0%, #070808 100%);
+        }
+
+        .instagram-icon {
+            background: linear-gradient(135deg, #163A6B 0%, #070808 100%);
+        }
+
+        .email-icon {
+            background: linear-gradient(135deg, #163A6B 0%, #070808 100%);
+        }
+
+        .contact-name {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .contact-handle {
+            font-size: 14px;
+            color: #002147;
+        }
+
+        /* Remove sidebar styles */
+        .sidebar {
+            display: none;
+        }
+
+        .profile {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0 auto 15px;
+        }
+
+        .profile h2 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .profile p {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .resume-btn {
+            width: 100%;
+            padding: 12px;
+            background: #002147;
+            color: #fafafa;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 20px 0;
+            transition: background 0.3s;
+        }
+
+        .resume-btn:hover {
+            background: #163A6B;
+        }
+
+        .nav-menu {
+            list-style: none;
+        }
+
+        .nav-item {
+            padding: 12px 15px;
+            margin: 5px 0;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            color: #4A5568;
+        }
+
+        .nav-item:hover {
+            background: #163A6B;
+        }
+
+        .nav-item.active {
+            background: #d4f1f4;
+            color: #002147;
+        }
+
+        .nav-item i {
+            width: 20px;
+        }
+
+        .social {
+            margin-top: 40px;
+        }
+
+        .social h3 {
+            font-size: 14px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: #4A5568;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #163A6B;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            text-align: center;
+            padding: 120px 20px;
+            background: transparent;
+            margin: 0;
+            min-height: calc(100vh - 120px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-title {
+            font-size: 56px;
+            color: #333;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .hero-title .name {
+            color: #002147;
+        }
+
+        .float {
+            display: inline-block;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
+        .hero-description {
+            color: #666;
+            font-size: 17px;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .profile-picture {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 2rem;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid #002147;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-picture img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cta-button {
+            padding: 15px 35px;
+            background: #002147;
+            color: #fafafa;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #163A6B;
+            transform: translateY(-2px);
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            /* Firefox */
+            padding-bottom: 5px;
+        }
+
+        .filter-tabs::-webkit-scrollbar {
+            display: none;
+            /* Chrome, Safari */
+        }
+
+        @media (max-width: 768px) {
+            .filter-tabs {
+                margin: 0 -20px 30px -20px;
+                padding: 0 20px 5px 20px;
+            }
+        }
+
+        .tab {
+            padding: 10px 20px;
+            border: 0.1px solid #e5e7eb;
+            border-radius: 10px;
+            background: #fafafa;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            color: #4A5568;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .tab:hover {
+            background: #e5e5e5;
+        }
+
+        .tab.active {
+            background: #002147;
+            color: #fafafa;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: #fafafa;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: #f0f0f0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 20px;
+        }
+
+        .project-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .project-date {
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .project-description {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .category-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .category-tag {
+            padding: 5px 12px;
+            color: #6b7280;
+            background: #f3f4f6;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 0 20px;
+            }
+
+            .nav-header {
+                gap: 20px;
+            }
+
+            .nav-header li {
+                font-size: 14px;
+            }
+
+            .hero-title {
+                font-size: 36px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+            .main-content {
+                padding: 20px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-item {
+                grid-template-columns: 1fr auto 1fr;
+                gap: 20px;
+                margin-bottom: 20px;
+                align-items: start;
+            }
+
+            .timeline-left {
+                text-align: right;
+            }
+
+            .timeline-right {
+                text-align: left;
+            }
+
+            .timeline-connector {
+                display: flex;
+            }
+
+            .timeline-company {
+                font-size: 14px;
+            }
+
+            .timeline-date {
+                font-size: 10px;
+            }
+
+            .timeline-role {
+                font-size: 14px;
+            }
+
+            .timeline-desc {
+                font-size: 10px;
+            }
+
+            .skills-circles {
+                gap: 40px;
+            }
+
+            .skills-banner {
+                padding: 60px 20px;
+                margin: 0px;
+            }
+
+            .tech-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                gap: 20px;
+            }
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .header-content {
+            background: #2d2d2d !important;
+        }
+
+        body.dark-mode .nav-header li {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .nav-header li:hover,
+        body.dark-mode .nav-header li.active {
+            color: #4a9eff;
+        }
+
+        body.dark-mode .hero-section {
+            background: #1a1a1a;
+        }
+
+        body.dark-mode .hero-title {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .hero-title .name {
+            color: #4a9eff;
+        }
+
+        body.dark-mode .hero-description {
+            color: #b0b0b0;
+        }
+
+        body.dark-mode .cta-button {
+            background: #4a9eff;
+        }
+
+        body.dark-mode .cta-button:hover {
+            background: #357abd;
+        }
+
+        body.dark-mode .tab {
+            background: #b0b0b0;
+            border: 0.1px solid #b0b0b0;
+            color: #2d2d2d;
+        }
+
+        body.dark-mode .tab:hover {
+            background: #618fc3;
+            border: 0.1px solid #618fc3;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .tab.active {
+            background: #357abd;
+            border: 0.1px solid #357abd;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .project-card {
+            background: #2d2d2d;
+        }
+
+        body.dark-mode .project-title {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .project-date {
+            color: #b0b0b0;
+        }
+
+        body.dark-mode .project-description {
+            color: #b0b0b0;
+        }
+
+        body.dark-mode .category-tag {
+            background: #b0b0b0;
+            color: #2d2d2d;
+        }
+
+
+        body.dark-mode .profile-picture {
+            border: 4px solid #618fc3;
+        }
+
+        body.dark-mode .about-section .section-title {
+            color: #4a9eff;
+        }
+
+        body.dark-mode .timeline-company,
+        body.dark-mode .timeline-role {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .timeline-desc,
+        body.dark-mode .timeline-date {
+            color: #b0b0b0;
+        }
+
+        body.dark-mode .skills-banner {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .skills-banner-title {
+            color: #4a9eff;
+        }
+
+        body.dark-mode .circle-progress circle:last-child {
+            stroke: #4a9eff;
+        }
+
+        body.dark-mode .skill-label {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .tools-title {
+            color: #4a9eff;
+        }
+
+        body.dark-mode .tech-category-title {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .tech-item p {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .contact-card {
+            background: #2d2d2d;
+        }
+
+        body.dark-mode .contact-title {
+            color: #4a9eff;
+        }
+
+        body.dark-mode .contact-name {
+            color: #4a9eff;
+        }
+
+        body.dark-mode .contact-handle {
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .contact-subtitle {
+            color: #b0b0b0;
+        }
+
+        /* Dark Mode Toggle Button */
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #163A6B 0%, #070808 100%);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            z-index: 9999;
+        }
+
+        .dark-mode-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .dark-mode-toggle i {
+            color: #fafafa;
+            font-size: 24px;
+        }
+
+        body.dark-mode .dark-mode-toggle {
+            background: linear-gradient(135deg, #4a9eff 0%, #357abd 100%);
+        }
+
+        @media (max-width: 768px) {
+            .dark-mode-toggle {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+            }
+
+            .dark-mode-toggle i {
+                font-size: 20px;
+            }
+        }
+
+        /* ── Portfolio Modal ── */
+        .portfolio-modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .portfolio-modal-overlay.active {
+            display: flex;
+        }
+
+        .portfolio-modal {
+            background: #fff;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 1080px;
+            height: 88vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 32px 80px rgba(0, 0, 0, 0.25);
+            animation: modalSlideIn 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(28px) scale(0.97);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .portfolio-modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 22px;
+            border-bottom: 1px solid #e5e7eb;
+            flex-shrink: 0;
+            gap: 12px;
+            background: #fff;
+        }
+
+        .portfolio-modal-header-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 0;
+        }
+
+        .portfolio-modal-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a2e;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 400px;
+        }
+
+        .portfolio-modal-category {
+            font-size: 12px;
+            color: #6b7280;
+            background: #f3f4f6;
+            padding: 3px 10px;
+            border-radius: 20px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .portfolio-modal-controls {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            flex-shrink: 0;
+        }
+
+        .modal-nav-btn {
+            width: 34px;
+            height: 34px;
+            border: 1px solid #e5e7eb;
+            background: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4A5568;
+            font-size: 12px;
+            transition: background 0.15s, border-color 0.15s;
+        }
+
+        .modal-nav-btn:hover {
+            background: #f3f4f6;
+            border-color: #357abd;
+        }
+
+        .modal-nav-btn:disabled {
+            opacity: 0.35;
+            cursor: default;
+        }
+
+        .modal-nav-counter {
+            font-size: 13px;
+            color: #9ca3af;
+            padding: 0 6px;
+            min-width: 44px;
+            text-align: center;
+        }
+
+        .modal-close-btn {
+            width: 34px;
+            height: 34px;
+            border: 1px solid #e5e7eb;
+            background: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4A5568;
+            font-size: 15px;
+            transition: background 0.15s, border-color 0.15s, color 0.15s;
+            margin-left: 8px;
+        }
+
+        .modal-close-btn:hover {
+            background: #fee2e2;
+            border-color: #fca5a5;
+            color: #dc2626;
+        }
+
+        .portfolio-modal-body {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+            background: #f9fafb;
+        }
+
+        .portfolio-modal-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        .portfolio-modal-loading {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #f9fafb;
+            gap: 14px;
+            z-index: 2;
+        }
+
+        .modal-spinner {
+            width: 38px;
+            height: 38px;
+            border: 3px solid #e5e7eb;
+            border-top-color:#357abd;
+            border-radius: 50%;
+            animation: modalSpin 0.75s linear infinite;
+        }
+
+        @keyframes modalSpin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* ── Overview Content (inside modal body) ── */
+        .modal-overview-view {
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            padding: 40px 48px;
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 40px;
+            align-content: start;
+            background: #f9fafb;
+        }
+
+        .modal-overview-main {}
+
+        .modal-overview-main h3 {
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.2px;
+            color: #1a1a2e;
+            margin-bottom: 12px;
+            margin-top: 32px;
+        }
+
+        .modal-overview-main h3:first-child {
+            margin-top: 0;
+        }
+
+        .modal-overview-main p {
+            font-size: 14px;
+            color: #4A5568;
+            line-height: 1.75;
+            margin-bottom: 4px;
+        }
+
+        /* Challenge section (inline with overview) */
+        .modal-challenge-card {
+            margin-top: 28px;
+        }
+
+        .modal-challenge-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.2px;
+            color: #1a1a2e;
+            margin-top: 0 !important;
+            margin-bottom: 20px !important;
+        }
+
+        .modal-challenge-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+
+        .modal-challenge-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .challenge-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 14px;
+            margin-top: 2px;
+        }
+
+        .challenge-icon.warning {
+            background: rgba(99, 102, 241, 0.12);
+            color: #002147;
+        }
+
+        .challenge-icon.sync {
+            background: rgba(99, 102, 241, 0.12);
+            color: #002147;
+        }
+
+        .challenge-icon.shield {
+            background: rgba(99, 102, 241, 0.12);
+            color: #002147;
+        }
+
+        .modal-challenge-item p {
+            margin: 0;
+            font-size: 14px;
+            color: #374151;
+            line-height: 1.25;
+            display: flex;
+            align-items: center;
+            min-height: 35px;
+        }
+
+        /* Sidebar */
+        .modal-overview-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* Solution header label */
+        .modal-solution-label {
+            font-size: 16px;
+            font-weight: 700;
+            /* text-transform: uppercase; */
+            letter-spacing: 0.2px;
+            color: #1a1a2e;
+            margin-bottom: 0;
+        }
+
+        /* Solution metric cards */
+        .modal-solution-card {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-left: 3px solid #002147;
+            border-radius: 12px;
+            padding: 22px 24px;
+            margin-bottom: 12px;
+        }
+
+        .modal-solution-card p {
+            font-size: 14px;
+            color: #374151;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Project Metadata card */
+        .modal-meta-card {
+            background: #fff;
+            border-radius: 14px;
+            padding: 24px 28px;
+            border: 1px solid #e0e7ff;
+        }
+
+        .modal-meta-card-title {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #7b8ba5;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+
+        .modal-meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .modal-meta-row {
+            margin-bottom: 0;
+        }
+
+        .modal-meta-label {
+            font-size: 10px;
+            color: #7b8ba5;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .modal-meta-value {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1a1a2e;
+        }
+
+        /* Core Stack section */
+        .modal-tech-section h3 {
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.2px;
+            color: #1a1a2e;
+            margin-bottom: 14px;
+        }
+
+        .modal-tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .modal-tech-tag {
+            padding: 8px 18px;
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 13px;
+            color: #374151;
+            font-weight: 500;
+            transition: background 0.15s, border-color 0.15s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .modal-tech-tag::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #002147;
+            flex-shrink: 0;
+        }
+
+        .modal-tech-tag:hover {
+            background: #f0f4ff;
+            border-color: #002147;
+        }
+
+        body.dark-mode .modal-tech-tag::before {
+            background: #357abd;
+        }
+
+        .modal-cta-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 16px 24px;
+            background: #002147;
+            color: #fff;
+            border: none;
+            border-radius: 14px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.15s;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.35);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body.dark-mode .modal-cta-btn {
+            background: linear-gradient(135deg, #4a9eff 0%, #357abd 100%);
+        }
+
+        .modal-cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 28px rgba(99, 102, 241, 0.5);
+        }
+
+        .modal-cta-btn i {
+            font-size: 14px;
+        }
+
+        /* Back to overview button (inside iframe view) */
+        .modal-back-btn {
+            display: none;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            background: #f3f4f6;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            color: #4A5568;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.15s, border-color 0.15s;
+            font-family: 'Poppins', sans-serif;
+            margin-right: 8px;
+        }
+
+        .modal-back-btn:hover {
+            background: #e5e7eb;
+            border-color: #357abd;
+        }
+
+        .modal-back-btn i {
+            font-size: 11px;
+        }
+
+        /* ── Dark mode modal overrides ── */
+        body.dark-mode .portfolio-modal {
+            background: #141419;
+            box-shadow: 0 32px 80px rgba(0, 0, 0, 0.55);
+        }
+
+        body.dark-mode .portfolio-modal-header {
+            background: #141419;
+            border-bottom-color: #2a2a35;
+        }
+
+        body.dark-mode .portfolio-modal-title {
+            color: #e8e8e8;
+        }
+
+        body.dark-mode .portfolio-modal-category {
+            background: #2a2a35;
+            color: #9ca3af;
+        }
+
+        body.dark-mode .modal-nav-btn {
+            background: #1c1c24;
+            border-color: #2a2a35;
+            color: #ccc;
+        }
+
+        body.dark-mode .modal-nav-btn:hover {
+            background: #252530;
+            border-color: #357abd;
+        }
+
+        body.dark-mode .modal-close-btn {
+            background: #1c1c24;
+            border-color: #2a2a35;
+            color: #ccc;
+        }
+
+        body.dark-mode .modal-close-btn:hover {
+            background: #7f1d1d;
+            border-color: #991b1b;
+            color: #fca5a5;
+        }
+
+        body.dark-mode .modal-nav-counter {
+            color: #6b6b80;
+        }
+
+        body.dark-mode .portfolio-modal-body,
+        body.dark-mode .portfolio-modal-loading {
+            background: #141419;
+        }
+
+        body.dark-mode .modal-spinner {
+            border-color: #2a2a35;
+            border-top-color: linear-gradient(135deg, #4a9eff 0%, #357abd 100%);
+        }
+
+        body.dark-mode .modal-overview-view {
+            background: #141419;
+        }
+
+        body.dark-mode .modal-overview-main h3 {
+            color: #f0f0f0;
+        }
+
+        body.dark-mode .modal-overview-main p {
+            color: #9ca3af;
+        }
+
+        body.dark-mode .modal-challenge-card h3 {
+            color: #f0f0f0;
+        }
+
+        body.dark-mode .challenge-icon.warning,
+        body.dark-mode .challenge-icon.sync,
+        body.dark-mode .challenge-icon.shield {
+            background: rgba(99, 102, 241, 0.15);
+            color: #357abd;
+        }
+
+        body.dark-mode .modal-challenge-item p {
+            color: #9ca3af;
+            line-height: 1.25;
+            display: flex;
+            align-items: center;
+            min-height: 35px;
+        }
+
+        body.dark-mode .modal-solution-label {
+            color: #f0f0f0;
+        }
+
+        body.dark-mode .modal-solution-card {
+            background: #1c1c24;
+            border-color: #2a2a35;
+            border-left-color: #357abd;
+        }
+
+        body.dark-mode .modal-solution-card p {
+            color: #c8c8d8;
+        }
+
+        body.dark-mode .modal-meta-card {
+            background: #1c1c24;
+            border-color: #2a2a35;
+        }
+
+        body.dark-mode .modal-meta-card-title {
+            color: #7c7c9a;
+        }
+
+        body.dark-mode .modal-meta-label {
+            color: #6b6b80;
+        }
+
+        body.dark-mode .modal-meta-value {
+            color: #f0f0f0;
+        }
+
+        body.dark-mode .modal-tech-section h4 {
+            color: #f0f0f0;
+        }
+
+        body.dark-mode .modal-tech-tag {
+            background: #1c1c24;
+            border-color: #2a2a35;
+            color: #c8c8d8;
+        }
+
+        body.dark-mode .modal-tech-tag:hover {
+            background: #252530;
+            border-color: #357abd;
+            
+        }
+
+        body.dark-mode .modal-back-btn {
+            background: #1c1c24;
+            border-color: #2a2a35;
+            color: #ccc;
+        }
+
+        body.dark-mode .modal-back-btn:hover {
+            background: #252530;
+            border-color: #357abd;
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-modal-overlay {
+                padding: 0;
+            }
+
+            .portfolio-modal {
+                border-radius: 0;
+                height: 100dvh;
+                max-width: 100%;
+            }
+
+            .portfolio-modal-title {
+                max-width: 160px;
+            }
+
+            .modal-overview-view {
+                grid-template-columns: 1fr;
+                padding: 24px 20px;
+                gap: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="header-content">
+            <ul class="nav-header">
+                <li class="active">Home</li>
+                <li>Projects</li>
+                <li>Profile</li>
+                <li>Contact</li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <!-- <p class="hero-subtitle">Product Owner</p> -->
+        <h1 class="hero-title">Hi! i'm <span class="name">Jason</span> <span class="float">🚀</span></h1>
+        <p class="hero-description">
+            Product Owner focused on delivering impactful digital products by leveraging data-driven decision-making and
+            AI (Artificial Intelligence), leading development squads, go-to-market strategy, operations, and customer
+            journey optimization.
+        </p>
+        <button class="cta-button">View Projects</button>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Projects Section -->
+        <div id="projectsSection">
+            <div class="filter-tabs">
+                <button class="tab active" data-filter="all">All</button>
+                <button class="tab" data-filter="Acquisition">Acquisition</button>
+                <button class="tab" data-filter="Payments">Payments</button>
+                <button class="tab" data-filter="Platform">Platform</button>
+                <button class="tab" data-filter="Operations">Operations</button>
+            </div>
+
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Projects will be inserted here by JavaScript -->
+            </div>
+        </div>
+
+        <!-- About Me Section -->
+        <div id="aboutSection" style="display: none;">
+
+            <div class="profile-picture">
+                <img src="profilepict.jpg" alt="Jason Nathanael Sabas">
+            </div>
+
+            <!-- Professional Experience -->
+            <section class="about-section">
+                <h2 class="section-title">Experience</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-left">
+                            <h3 class="timeline-company">Adira Dinamika Multi Finance</h3>
+                            <p class="timeline-date">Oct 2025 - Now</p>
+                        </div>
+                        <div class="timeline-connector">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-line"></div>
+                        </div>
+                        <div class="timeline-right">
+                            <h3 class="timeline-role">Product Owner | Adiraku Secure Loans and Danadira App</h3>
+                            <p class="timeline-desc">Delivered product enhancements for Secure Loans acquisition and
+                                lead monitoring in adiraku, and optimized whitelisted acquisition and end-to-end flows
+                                in Danadira.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-left">
+                            <h3 class="timeline-company">Adira Dinamika Multi Finance</h3>
+                            <p class="timeline-date">Mar 2024 - Oct 2025</p>
+                        </div>
+                        <div class="timeline-connector">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-line"></div>
+                        </div>
+                        <div class="timeline-right">
+                            <h3 class="timeline-role">Product Owner | Adiraku App</h3>
+                            <p class="timeline-desc">Delivered core product improvements across app performance,
+                                reliability, customer journey, payment flows, and continuous feature enhancements within
+                                the adiraku app.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-left">
+                            <h3 class="timeline-company">Adira Dinamika Multi Finance</h3>
+                            <p class="timeline-date">Jan 2023 - Mar 2024</p>
+                        </div>
+                        <div class="timeline-connector">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-line"></div>
+                        </div>
+                        <div class="timeline-right">
+                            <h3 class="timeline-role">Product Manager | Adira - Danamon Ecosystem</h3>
+                            <p class="timeline-desc">Launched Danamon Banking as a Service within the adiraku app,
+                                driving 1000% growth in direct debit installment transactions while strengthening
+                                regulatory compliance (OJK & BI), production stability, and ecosystem expansion.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-left">
+                            <h3 class="timeline-company">Adira Dinamika Multi Finance</h3>
+                            <p class="timeline-date">Jan 2022 - Jan 2023</p>
+                        </div>
+                        <div class="timeline-connector">
+                            <div class="timeline-dot"></div>
+                        </div>
+                        <div class="timeline-right">
+                            <h3 class="timeline-role">Management Trainee | Digital Product Strategy</h3>
+                            <p class="timeline-desc">Delivered market insights during OJT, streamlined branch business
+                                processes, facilitated Design Thinking sessions, and organized kick-off and workshop
+                                events to drive alignment and execution.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-left">
+                            <h3 class="timeline-company">Suntory Garuda Beverage</h3>
+                            <p class="timeline-date">Sep 2020 - Jan 2022</p>
+                        </div>
+                        <div class="timeline-connector">
+                            <div class="timeline-dot"></div>
+                        </div>
+                        <div class="timeline-right">
+                            <h3 class="timeline-role">Business Analyst | Go To Market Strategy</h3>
+                            <p class="timeline-desc">Enhanced business operations by reducing operational costs through
+                                data-driven analysis, optimizing transportation routes to improve retail sales
+                                productivity, and uncovering new market opportunities to accelerate growth.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education -->
+            <section class="about-section">
+                <h2 class="section-title">Education</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-left">
+                            <h3 class="timeline-company">Binus University</h3>
+                            <p class="timeline-date">2017 - 2021</p>
+                        </div>
+                        <div class="timeline-connector">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-line"></div>
+                        </div>
+                        <div class="timeline-right">
+                            <h3 class="timeline-role">Industrial Engineering</h3>
+                            <p class="timeline-desc">Developed leadership and event management capabilities through
+                                involvement in Freshmen Leader, Football Student Activity Unit, and HIMTRI events.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section class="skills-banner">
+                <h2 class="skills-banner-title">Skills</h2>
+                <p class="skills-banner-subtitle">Strong expertise in SQL data extraction, product analytics, and
+                    end-to-end product execution.</p>
+                <div class="skills-circles">
+                    <div class="skill-circle-item">
+                        <div class="circle-progress" data-percent="90">
+                            <svg>
+                                <circle cx="75" cy="75" r="65"></circle>
+                                <circle cx="75" cy="75" r="65"></circle>
+                            </svg>
+                            <div class="circle-percent">0%</div>
+                        </div>
+                        <p class="skill-label"><b>SQL Query</b></p>
+                    </div>
+                    <div class="skill-circle-item">
+                        <div class="circle-progress" data-percent="95">
+                            <svg>
+                                <circle cx="75" cy="75" r="65"></circle>
+                                <circle cx="75" cy="75" r="65"></circle>
+                            </svg>
+                            <div class="circle-percent">0%</div>
+                        </div>
+                        <p class="skill-label"><b>Product Analytics</b></p>
+                    </div>
+                    <div class="skill-circle-item">
+                        <div class="circle-progress" data-percent="95">
+                            <svg>
+                                <circle cx="75" cy="75" r="65"></circle>
+                                <circle cx="75" cy="75" r="65"></circle>
+                            </svg>
+                            <div class="circle-percent">0%</div>
+                        </div>
+                        <p class="skill-label"><b>Project Management</b></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Technologies Section -->
+            <section class="about-section">
+                <h2 class="tools-title">Tools</h2>
+
+                <div class="tech-category">
+                    <h3 class="tech-category-title">SQL Query</h3>
+                    <div class="tech-grid">
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <img src="tools-images/mysql.png" alt="MySQL">
+                            </div>
+                            <p>MySQL</p>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <img src="tools-images/postgresql.png" alt="PostgreSQL">
+                            </div>
+                            <p>PostgreSQL</p>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <img src="tools-images/dbeaver.png" alt="DBeaver">
+                            </div>
+                            <p>DBeaver</p>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <img src="tools-images/metabase.png" alt="Metabase">
+                            </div>
+                            <p>Metabase</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-category">
+                    <h3 class="tech-category-title">Product Analytics</h3>
+                    <div class="tech-grid">
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <img src="tools-images/google-analytics.png" alt="Google Analytics">
+                            </div>
+                            <p>Google Analytics</p>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <img src="tools-images/branchio.png" alt="BranchIo">
+                            </div>
+                            <p>Branch.io</p>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <img src="tools-images/moengage.png" alt="MoEngage">
+                            </div>
+                            <p>MoEngage</p>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <img src="tools-images/looker.png" alt="Looker Studio">
+                            </div>
+                            <p>Looker Studio</p>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <img src="tools-images/datadog.png" alt="DataDog">
+                            </div>
+                            <p>DataDog</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-category">
+                    <h3 class="tech-category-title">Project Management</h3>
+                    <div class="tech-grid">
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <img src="tools-images/miro.png" alt="Miro">
+                            </div>
+                            <p>Miro</p>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <img src="tools-images/figma.png" alt="Figma">
+                            </div>
+                            <p>Figma</p>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <img src="tools-images/jira.png" alt="Jira">
+                            </div>
+                            <p>Jira</p>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <img src="tools-images/confluence.png" alt="Confluence">
+                            </div>
+                            <p>Confluence</p>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-icon">
+                                <img src="tools-images/notion.png" alt="Notion">
+                            </div>
+                            <p>Notion</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Contact Section -->
+        <div id="contactSection" style="display: none;">
+            <div class="contact-container">
+                <h1 class="contact-title">Let's Connect!</h1>
+                <p class="contact-subtitle">
+                    Feel free to reach me out on any of these platforms.
+                </p>
+
+                <div class="contact-grid">
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/in/jasonnathanaelsabas" target="_blank" class="contact-card">
+                        <div class="contact-icon linkedin-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </div>
+                        <h3 class="contact-name">LinkedIn</h3>
+                        <p class="contact-handle">Jason Nathanael Sabas</p>
+                    </a>
+
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/6285156889897" target="_blank" class="contact-card">
+                        <div class="contact-icon whatsapp-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <h3 class="contact-name">WhatsApp</h3>
+                        <p class="contact-handle">+62 851-5688-9897</p>
+                    </a>
+
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/jasonsabas" target="_blank" class="contact-card">
+                        <div class="contact-icon instagram-icon">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <h3 class="contact-name">Instagram</h3>
+                        <p class="contact-handle">@jasonsabas</p>
+                    </a>
+
+                    <!-- Email -->
+                    <a href="mailto:jasonnsabas@gmail.com" class="contact-card">
+                        <div class="contact-icon email-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3 class="contact-name">Email</h3>
+                        <p class="contact-handle">jasonnsabas@gmail.com</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <!-- CV Button - REPLACE WITH YOUR GOOGLE DRIVE LINK -->
+    <a href="https://drive.google.com/file/d/1rJTD4t2hHbmaejFvP_psFkvGlGgP9WHF/preview" target="_blank"
+        class="cv-button" id="cvButton" title="View CV">
+        <i class="fas fa-file-alt"></i>
+    </a>
+
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle" id="darkModeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script>
+        // Navigation items
+        const navItems = document.querySelectorAll('.nav-header li');
+
+        // Main content sections
+        const projectsSection = document.getElementById('projectsSection');
+        const aboutSection = document.getElementById('aboutSection');
+        const heroSection = document.querySelector('.hero-section');
+        const contactSection = document.getElementById('contactSection');
+
+        // CTA Button
+        const ctaButton = document.querySelector('.cta-button');
+
+        // CV Button
+        const cvButton = document.getElementById('cvButton');
+
+        // --- 2. GA TRACKER FUNCTION (Must be defined first) ---
+        function trackClickEvent(eventType, eventLabel, eventCategory) {
+            // This safe check prevents the script from crashing if gtag isn't loaded yet
+            if (typeof gtag === 'function') {
+                gtag('event', eventType, {
+                    'event_category': eventCategory,
+                    'event_label': eventLabel,
+                    'destination_section': eventCategory.toLowerCase().replace(' ', '_')
+                });
+            }
+        } // <-- CRITICAL: Closing brace for trackClickEvent function is here.
+
+        // --- 3. ATTACH LISTENERS AFTER THE PAGE IS LOADED ---
+        document.addEventListener('DOMContentLoaded', () => { // <-- Listener starts here.
+
+            // --- GA TRACKING LOGIC ---
+            // A. TRACKING: MAIN NAVIGATION MENU CLICKS (ADJUSTED)
+            navItems.forEach((li, index) => { // Use the li (list item) for tracking
+                li.addEventListener('click', () => {
+                    // Get the link text using the index to correspond with your navigation logic
+                    let linkText = '';
+                    if (index === 0) linkText = 'Home';
+                    else if (index === 1) linkText = 'Projects';
+                    else if (index === 2) linkText = 'Profile';
+                    else if (index === 3) linkText = 'Contact';
+
+                    // Track event
+                    trackClickEvent('menu_clicked', linkText, 'navigation');
+
+                    // NOTE: The rest of your navigation logic (navItems.forEach((item, index) => {...})) 
+                    // will handle the section visibility and smooth scrolling AFTER this listener fires.
+                });
+            });
+
+            // B. TRACKING: CV BUTTON CLICK
+            if (cvButton) {
+                cvButton.addEventListener('click', () => {
+                    console.log('CV button clicked');
+                    console.log('Timestamp:', new Date().toISOString());
+
+                    // Track event
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'cv_button_clicked', {
+                            'event_category': 'engagement',
+                            'event_label': 'CV Download'
+                        });
+                    }
+                });
+            }
+
+            // C. TRACKING: CLICKS WITHIN PROJECTS SECTION (Links/Buttons)
+            if (projectsSection) {
+                projectsSection.addEventListener('click', (event) => {
+                    const target = event.target.closest('a, button');
+                    if (target) {
+                        const label = target.textContent.trim() || target.getAttribute('href') || target.tagName;
+                        trackClickEvent('section_click', label, 'projects_section');
+                    }
+                });
+            }
+
+            // D. TRACKING: CLICKS WITHIN CONTACT SECTION (Social Media/Email Links)
+            if (contactSection) {
+                contactSection.addEventListener('click', (event) => {
+                    const target = event.target.closest('a');
+                    if (target) {
+                        const label = target.textContent.trim() || target.getAttribute('href');
+                        trackClickEvent('section_click', label, 'contact_section');
+                    }
+                });
+            }
+
+            // E. TRACKING: CLICKS WITHIN HERO/ABOUT SECTIONS (e.g., "Download Resume" button)
+            if (heroSection) {
+                heroSection.addEventListener('click', (event) => {
+                    const target = event.target.closest('a, button');
+                    if (target) {
+                        const label = target.textContent.trim() || target.getAttribute('href') || target.tagName;
+                        trackClickEvent('section_click', label, 'hero_about_section');
+                    }
+                });
+            }
+
+            navItems.forEach((item, index) => {
+                item.addEventListener('click', function () {
+
+                    // Track menu click
+                    const pageName = ['Home', 'Projects', 'Profile', 'Contact'][index];
+                    const virtualPagePath = ['/home', '/projects', '/profile', '/contact'][index];
+
+                    console.log('Page:', virtualPagePath);
+                    console.log('Menu clicked:', pageName);
+                    console.log('Timestamp:', new Date().toISOString());
+
+                    //Send to Google Analytics
+                    if (typeof gtag !== 'undefined') {
+                        // Track menu click event
+                        gtag('event', 'page_view', 'menu_clicked', {
+                            'page_view': virtualPagePath,
+                            'page_name': pageName
+                        });
+                    }
+
+                    navItems.forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Show/hide sections based on navigation
+                    if (index === 0) { // Home
+                        heroSection.style.display = 'flex';
+                        projectsSection.style.display = 'none';
+                        aboutSection.style.display = 'none';
+                        contactSection.style.display = 'none';
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    } else if (index === 1) { // Portfolio
+                        heroSection.style.display = 'none';
+                        projectsSection.style.display = 'block';
+                        aboutSection.style.display = 'none';
+                        contactSection.style.display = 'none';
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    } else if (index === 2) { // Profile
+                        heroSection.style.display = 'none';
+                        projectsSection.style.display = 'none';
+                        aboutSection.style.display = 'block';
+                        contactSection.style.display = 'none';
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    } else if (index === 3) { // Contact
+                        heroSection.style.display = 'none';
+                        projectsSection.style.display = 'none';
+                        aboutSection.style.display = 'none';
+                        contactSection.style.display = 'block';
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // CTA Button - Navigate to Portfolio
+            if (ctaButton) {
+                ctaButton.addEventListener('click', function () {
+                    console.log('Home clicked: explore-btn');
+                    console.log('Timestamp:', new Date().toISOString());
+
+                    // Send to Google Analytics
+                    if (typeof gtag !== 'undefined') {
+
+                        gtag('event', 'home_clicked', {
+                            // 'page_view': virtualPagePath,
+                            'button_text': 'explore-btn'
+                        });
+                    }
+                    // Click the Portfolio nav item (index 1)
+                    navItems[1].click();
+                });
+            }
+
+            setTimeout(function () {
+                const contactCards = document.querySelectorAll('.contact-card');
+
+                contactCards.forEach(card => {
+                    card.addEventListener('click', function (e) {
+                        const contactName = this.querySelector('.contact-name').textContent;
+                        const contactHandle = this.querySelector('.contact-handle').textContent;
+
+                        console.log('Contact clicked:', contactName);
+                        console.log('Contact detail:', contactHandle);
+                        console.log('Timestamp:', new Date().toISOString());
+
+                        // Send to Google Analytics
+                        if (typeof gtag !== 'undefined') {
+                            gtag('event', 'contact_clicked', {
+                                'contact_clicked': contactName,
+                                'contact_detail': contactHandle
+                            });
+                        }
+                    });
+                });
+            }, 100);
+
+        }); // <-- CRITICAL: Closing brace and parenthesis for DOMContentLoaded is here.
+
+        // Hide/Show header on scroll
+        let lastScrollTop = 0;
+        const header = document.querySelector('.header');
+        let scrollThreshold = 1; // Minimum scroll amount to trigger hide/show
+
+        window.addEventListener('scroll', function () {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (Math.abs(scrollTop - lastScrollTop) < scrollThreshold) {
+                return;
+            }
+
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                // Scrolling down & past 100px
+                header.style.transform = 'translateY(-200%)';
+                header.style.transition = 'transform 0.3s ease-in-out';
+
+                // Hide dark mode toggle and CV button
+                darkModeToggle.style.transform = 'translateY(150px)';
+                darkModeToggle.style.transition = 'transform 0.3s ease-in-out';
+                cvButton.style.transform = 'translateY(200px)';
+                cvButton.style.transition = 'transform 0.3s ease-in-out';
+            } else {
+                // Scrolling up
+                header.style.transform = 'translateY(0)';
+                header.style.transition = 'transform 0.3s ease-in-out';
+
+                // Show dark mode toggle and CV button
+                darkModeToggle.style.transform = 'translateY(0)';
+                darkModeToggle.style.transition = 'transform 0.3s ease-in-out';
+                cvButton.style.transform = 'translateY(0)';
+                cvButton.style.transition = 'transform 0.3s ease-in-out';
+            }
+
+            lastScrollTop = scrollTop;
+        });
+
+        // Animate skill circles on scroll
+        function animateSkills() {
+            const skillsSection = document.querySelector('.skills-banner');
+            const circles = document.querySelectorAll('.circle-progress');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        circles.forEach(circle => {
+                            const percent = circle.getAttribute('data-percent');
+                            const circleElement = circle.querySelector('circle:last-child');
+                            const percentText = circle.querySelector('.circle-percent');
+
+                            // Animate circle
+                            const offset = 408 - (408 * percent) / 100;
+                            circleElement.style.strokeDashoffset = offset;
+
+                            // Animate number counting
+                            let current = 0;
+                            const increment = percent / 60; // 60 frames for smooth animation
+                            const timer = setInterval(() => {
+                                current += increment;
+                                if (current >= percent) {
+                                    current = percent;
+                                    clearInterval(timer);
+                                }
+                                percentText.textContent = Math.round(current) + '%';
+                            }, 25);
+                        });
+
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            if (skillsSection) {
+                observer.observe(skillsSection);
+            }
+        }
+
+        // Call the function
+        animateSkills();
+
+        // // Projects data v1
+        const projects = [
+            {
+                title: "Leads Submission Portal",
+                date: "mar-apr '26",
+                category: "Operations",
+                description: "A centralized admin portal to enable bulk submission of partner leads and streamline lead distribution.",
+                image: "project-images/LeadsSubmissionPortal.png",
+                pdf: "https://drive.google.com/file/d/1kiefI4FpVcXQOfFGFnOncGx3aJEqs3B_/preview",
+                year: "2026",
+                initiative: "Adira Finance",
+                duration: "2 months",
+                role: "Product Owner",
+                overview: "A centralized admin portal to enable bulk submission of partner leads and streamline lead distribution.",
+                challenge: [
+                    "Time-consuming manual lead submission process",
+                    "Inefficient lead distribution and processing",
+                ],
+                solution: "Developed an admin portal to support bulk leads upload via Excel and enable seamless integration with telecenter systems for faster lead processing.",
+                technologies: ["Postman", "SQL", "Metabase", "Jira", "Confluence"]
+            },                
+            {
+                title: "Credit Status Tracker",
+                date: "feb-mar '26",
+                category: "Acquisition",
+                description: "A centralized dashboard and API to track credit application status and monitor performance across the application funnel.",
+                image: "project-images/CreditStatusTracker.png",
+                pdf: "https://drive.google.com/file/d/1oDavIASWsYEWdOtM-JJ-08Qe52e8Kftw/preview",
+                year: "2026",
+                initiative: "Adira Finance",
+                duration: "2 months",
+                role: "Product Owner",
+                overview: "A centralized dashboard and API to track credit application status and monitor performance across the application funnel.",
+                challenge: [
+                    "Limited visibility into application status across stages",
+                    "Low follow-up on pending credit applications",
+                    "Gaps in funnel tracking and performance monitoring"
+                ],
+                solution: "Developed APIs and a centralized dashboard to enable real-time credit application tracking and performance monitoring across the funnel.",
+                technologies: ["Jira","Draw.io", "SQL", "Metabase"]
+            },
+            {
+                title: "Personal Trading Tracker",
+                date: "jan-feb '26",
+                category: "Platform",
+                description: "A personal trading tracker app to monitor and evaluate trading performance with detailed trade records and P&L analysis.",
+                image: "project-images/PersonalTradingTracker.png",
+                pdf: "https://drive.google.com/file/d/1MEFWmaghVpRlH_84NJtfhZLyV_8iMqGK/preview",
+                year: "2026",
+                initiative: "Personal Project",
+                duration: "2 months",
+                role: "Product Manager",
+                overview: "A Personal trading tracker to centralize trade records, monitor portfolio performance with P&L insights, and integrate live market news for better decision-making.",
+                challenge: [
+                    "Scattered trade tracking and low portfolio P&L visibility",
+                    "Lack of integrated market insights",
+                    "Ineffective performance evaluation and slower decision-making"
+                ],
+                solution: "Centralized trade tracking system with Google Sheets integration to monitor performance, visualize P&L, and provide real-time market insights for faster decision-making.",
+                technologies: ["HTML", "CSS", "JavaScript", "Google Sheets", "Apps Script"]
+            },
+            {
+                title: "Referral Engine System",
+                date: "jun-jan '26",
+                category: "Acquisition",
+                description: "A referral engine system for referral registration, lead management, and commission configuration.",
+                image: "project-images/ReferralEngineSystem.png",
+                pdf: "https://drive.google.com/file/d/1eRA1QV6XR7TgQSV2yeZm-tnOcyMPjiyj/preview",
+                year: "2025–2026",
+                initiative: "Adira Finance",
+                duration: "8 months",
+                role: "Product Owner",
+                overview: "A referral engine system for referral registration, lead management, and commission configuration.",
+                challenge: [
+                    "Manual referral registration",
+                    "Fragmented lead tracking",
+                    "Limited visibility into referrer performance"
+                ],
+                solution: "Built an end-to-end referral engine with a CMS for referral registration, centralized lead management, and configurable commission structures to streamline operations and improve efficiency.",
+                technologies: ["Miro", "Jira", "Figma", "SQL", "Google Analytics"]
+            },
+            {
+                title: "Personal Finance Management",
+                date: "dec-jan '26",
+                category: "Platform",
+                description: "A personal finance management app to simplify transaction tracking and daily expense management.",
+                image: "project-images/PersonalFinanceManagement.png",
+                pdf: "https://drive.google.com/file/d/1vKOCQP-WxD7qnzEtu7zqIb3qlVSzHYq3/preview",
+                year: "2026",
+                initiative: "Personal Project",
+                duration: "2 months",
+                role: "Product Manager",
+                overview: "A personal finance management app to simplify transaction tracking and daily expense management.",
+                challenge: [
+                    "Inconsistent expense recording",
+                    "Limited expense monitoring",
+                ],
+                solution: "Delivered a personal finance management app enabling seamless transaction recording and centralized expense tracking to improve financial visibility and spending awareness.",
+                technologies: ["HTML", "CSS", "JavaScript", "Google Sheets", "Apps Script"]
+            },
+            {
+                title: "PPOB Biller Integration",
+                date: "nov-jan '26",
+                category: "Payments",
+                description: "A PPOB feature in the Adiraku app to enable in-app utility transactions and enhance the overall payment experience.",
+                image: "project-images/PPOBBillerIntegration.png",
+                pdf: "https://drive.google.com/file/d/1VMTHzMljoY1yIWUzDmUUSMcN6GCUGNg8/preview",
+                year: "2025–2026",
+                initiative: "Adira Finance",
+                duration: "3 months",
+                role: "Product Owner",
+                overview: "A PPOB feature in the Adiraku app to enable in-app utility transactions and enhance the overall payment experience.",
+                challenge: [
+                    "External platform dependency",
+                    "Fragmented user journey",
+                    "No in-app utility offerings"
+                ],
+                solution: "Launched PPOB features in the Adiraku app via third-party integration, enabling seamless in-app utility transactions to improve user experience and drive transaction growth.",
+                technologies: ["Miro", "Jira", "Metabase", "MoEngage" , "Notion"]
+            },
+            {
+                title: "Point of Sale System",
+                date: "sept-dec '25",
+                category: "Platform",
+                description: "A user-friendly POS system designed to enable real-time transaction monitoring through Google Sheets integration.",
+                image: "project-images/PointofSaleSystem.png",
+                pdf: "https://drive.google.com/file/d/1VnJlJvO69fSJ_JHie5Xk5DidTo0PfRBF/preview",
+                year: "2025",
+                initiative: "Personal Project",
+                duration: "4 months",
+                role: "Product Manager",
+                overview: "A user-friendly POS system designed to enable real-time transaction monitoring through Google Sheets integration.",
+                challenge: [
+                    "Limited access to affordable POS solutions",
+                    "Lack of real-time transaction visibility",
+                    "Reliance on manual sales recording processes"
+                ],
+                solution: "Developed an affordable POS system with Google Sheets Integration to enable real-time transaction tracking and digitize sales recording processes.",
+                technologies: ["Google Sheets", "Apps Script", "HTML", "CSS", "JavaScript"]
+            },
+            {
+                title: "Leads Monitoring Dashboard",
+                date: "nov-dec '25",
+                category: "Operations",
+                description: "A centralized dashboard for digital lead monitoring and reporting for Adira Secure Loan within the Adiraku app.",
+                image: "project-images/LeadsMonitoringDashboard.png",
+                pdf: "https://drive.google.com/file/d/1diZShwLd3jSPylCJ874iv2uhrgoyu190/preview",
+                year: "2025",
+                initiative: "Adira Finance",
+                duration: "2 months",
+                role: "Product Owner",
+                overview: "A centralized dashboard for digital lead monitoring and reporting for Adira Secure Loan within the Adiraku app.",
+                challenge: [
+                    "Fragmented lead data sources",
+                    "Manual monitoring process",
+                    "Slow decision-making"
+                ],
+                solution: "Built a real-time dashboard with consolidated data and automated reporting to enable faster, data-driven decision-making.",
+                technologies: ["SQL", "Metabase", "Branch.io", "Looker Studio", "Google Analytics"]
+            },
+            {
+                title: "Credit Limit Configuration",
+                date: "okt-nov '25",
+                category: "Platform",
+                description: "A configurable credit limit system to improve lead qualification and optimize the acquisition funnel.",
+                image: "project-images/CreditLimitConfiguration.png",
+                pdf: "https://drive.google.com/file/d/16PQgDgd4JvjubfeIKWNLBl22shbTmiWq/preview",
+                year: "2025",
+                initiative: "Adira Finance",
+                duration: "2 months",
+                role: "Product Owner",
+                overview: "A configurable credit limit system to improve lead qualification and optimize the acquisition funnel.",
+                challenge: [
+                    "Static credit limit rules",
+                    "Limited flexibility in lead qualification",
+                    "Missed qualified opportunities"
+                ],
+                solution: "Developed a configurable validation system enabling dynamic credit limit adjustments to improve lead qualification and conversion.",
+                technologies: ["Firebase", "SQL", "Metabase", "Google Analytics", "MoEngage"]
+            },
+            {
+                title: "App Reliability Improvement",
+                date: "jul-sept '25",
+                category: "Operations",
+                description: "An app reliability enhancement initiative focused on enhanced error message mapping and real-time alerts.",
+                image: "project-images/ApplicationReliabilityImprovement.png",
+                pdf: "https://drive.google.com/file/d/1sOvm3glEJS751_U2zb39w1j2aB9E58NB/preview",
+                year: "2025",
+                initiative: "Adira Finance",
+                duration: "3 months",
+                role: "Product Owner",
+                overview: "An app reliability enhancement initiative focused on enhanced error message mapping and real-time alerts.",
+                challenge: [
+                    "Unclear error messaging",
+                    "Lack of visibility into error occurrences",
+                ],
+                solution: "Implemented UI-level error mapping and real-time alerts to improve issue detection and enable faster issue resolution.",
+                technologies: ["DataDog", "Kubernetess", "Uptime Kuma", "Confluence"]
+            },
+            {
+                title: "UI Asset Management",
+                date: "may-jul '25",
+                category: "Platform",
+                description: "An internal CMS designed to centralize UI asset documentation and streamline access for consistent usage across teams.",
+                image: "project-images/UIAssetManagement.png",
+                pdf: "https://drive.google.com/file/d/1T10P-iykHKFuc6a6ejPmDL2QLc9f7r0j/preview",
+                year: "2025",
+                initiative: "Adira Finance",
+                duration: "3 months",
+                role: "Product Owner",
+                overview: "An internal CMS designed to centralize UI asset documentation and streamline access for consistent usage across teams.",
+                challenge: [
+                    "Decentralized UI asset storage across teams",
+                    "Inconsistent documentation and limited accessibility",
+                    "Inefficiencies, duplication, and misalignment in asset usage"
+                ],
+                solution: "Developed an internal CMS to centralize and standardize UI assets with structured categorization to ensure consistent usage across all teams",
+                technologies: ["HTML", "Figma", "Confluence", "Jira"]
+            },
+            {
+                title: "In App DAEP Submission",
+                date: "apr-may '25",
+                category: "Acquisition",
+                description: "A seamless in-app submission flow for the Danamon–Adira Employee Program (DAEP) within the adiraku app.",
+                image: "project-images/InAppEmployeeProgramSubmission.png",
+                pdf: "https://drive.google.com/file/d/11w_1tEBntW4-1_xr6q3dy6Y4Q07jEQ--/preview",
+                year: "2025",
+                initiative: "Adira Finance",
+                duration: "2 months",
+                role: "Product Owner",
+                overview: "A seamless in-app submission flow for the Danamon–Adira Employee Program (DAEP) within the adiraku app.",
+                challenge: [
+                    "Manual and off-platform submission process",
+                    "High User friction in submission journey",
+                    "Low program adoption"
+                ],
+                solution: "Implemented an in-app DAEP submission flow with real-time order validation to streamline the process and increase program adoption.",
+                technologies: ["Miro", "Jira", "Figma", "Metabase"]
+            },
+            {
+                title: "Banking as a Service (Transfer)",
+                date: "jan-may '25",
+                category: "Payments",
+                description: "Integrated Danamon banking systems to enable seamless fund transfer capabilities within the adiraku app",
+                image: "project-images/BankingasaService.png",
+                pdf: "https://drive.google.com/file/d/1CI92_GniXtnkU7H-4CyHQGhGJdAz3vKt/preview",
+                year: "2025",
+                initiative: "Adira Finance",
+                duration: "5 months",
+                role: "Product Owner",
+                overview: "Integrated Danamon banking systems to enable seamless fund transfer capabilities within the adiraku app",
+                challenge: [
+                    "Fragmented cross-platform user experience",
+                    "Non-seamless transfer journey"
+                ],
+                solution: "Implemented secure banking API integration to enable real-time fund transfers within the adiraku app.",
+                technologies: ["Jira", "Confluence", "Figma", "SQL", "Postman"]
+            },
+            {
+                title: "Admin Approval System",
+                date: "nov-dec '24",
+                category: "Operations",
+                description: "An internal CMS to manage, review, and approve MRP changes within the admin panel.",
+                image: "project-images/AdminPanelApprovalRole.png",
+                pdf: "https://drive.google.com/file/d/1d1BvfuLS-7FA6Di6RU3c_nzsuyv41YEY/preview",
+                year: "2024",
+                initiative: "Adira Finance",
+                duration: "2 months",
+                role: "Product Owner",
+                overview: "An internal CMS to manage, review, and approve MRP changes within the admin panel.",
+                challenge: [
+                    "Uncontrolled MRP changes",
+                    "Data integrity risks",
+                    "Lack of approval governance"
+                ],
+                solution: "Implemented a multi-level approval workflow with authorization controls and audit trail to ensure governance and data integrity.",
+                technologies: ["Jira", "Confluence", "SQL", "DBeaver"]
+            },
+            {
+                title: "App Reliability Dashboard",
+                date: "aug-nov '24",
+                category: "Operations",
+                description: "An app reliability enhancement initiative focused on real-time error logging and performance monitoring.",
+                image: "project-images/AppReliabilityPerformanceDashboard.png",
+                pdf: "https://drive.google.com/file/d/16G1V0ZjO-P8xkpYcEMnQCJHm48-u6UXx/preview",
+                year: "2024",
+                initiative: "Adira Finance",
+                duration: "4 months",
+                role: "Product Owner",
+                overview: "An app reliability enhancement initiative focused on real-time error logging and performance monitoring.",
+                challenge: [
+                    "Lack of real-time monitoring",
+                    "Slow issue diagnosis"
+                ],
+                solution: "Implemented real-time monitoring tools to improve issue detection and enable faster issue resolution.",
+                technologies: ["DataDog", "Kubernetess", "Metabase", "Confluence"]
+            },
+            {
+                title: "AdiraPay User Migration",
+                date: "aug-nov '24",
+                category: "Payments",
+                description: "Sunset AdiraPay and migrate users to Danamon payment options to ensure a seamless and reliable payment experience.",
+                image: "project-images/AdiraPaySunsetandUserPaymentMigration.png",
+                pdf: "https://drive.google.com/file/d/1l7guP91_StNXU10TdMzNmeEljgnGGqwn/preview",
+                year: "2024",
+                initiative: "Adira Finance",
+                duration: "4 months",
+                role: "Product Owner",
+                overview: "Sunset AdiraPay and migrate users to Danamon payment options to ensure a seamless and reliable payment experience.",
+                challenge: [
+                    "Frequent transaction failures in legacy payment channel",
+                    "Low user trust due to inconsistent payment performance",
+                ],
+                solution: "Designed and implemented a user migration flow to transition users from AdiraPay to Danamon payment options with minimal friction and disruption.",
+                technologies: ["Miro", "Figma", "Jira", "DBeaver", "MoEngage"]
+            },
+            {
+                title: "D-Wallet Integration",
+                date: "jun-sept '24",
+                category: "Payments",
+                description: "Integrated Danamon D-Wallet to enable wallet linkage and installment Transactions within the adiraku app.",
+                image: "project-images/DWalletIntegration.png",
+                pdf: "https://drive.google.com/file/d/1unH7WXbDRtytOSQS_C98U3AJg4cLkb4G/preview",
+                year: "2024",
+                initiative: "Adira Finance",
+                duration: "4 months",
+                role: "Product Owner",
+                overview: "Integrated Danamon D-Wallet to enable wallet linkage and installment transactions within the adiraku app.",
+                challenge: [
+                    "Limited payment flexibility for users",
+                ],
+                solution: "Enabled D-Wallet capabilities including account linking, balance visibility, and installment payments within the app.",
+                technologies: ["Miro", "Jira", "Figma", "SQL", "Postman"]
+            },
+            {
+                title: "In App CASA Opening",
+                date: "mar-jun '24",
+                category: "Acquisition",
+                description: "A seamless in-app CASA account opening experience for Danamon accounts within the adiraku app.",
+                image: "project-images/InAppCASAOpening.png",
+                pdf: "https://drive.google.com/file/d/1_ob2O5nqJ4BuiF9PBVbFFW222JpHaY0r/preview",
+                year: "2024",
+                initiative: "Adira Finance",
+                duration: "4 months",
+                role: "Product Manager",
+                overview: "A seamless in-app CASA account opening experience for Danamon accounts within the adiraku app.",
+                challenge: [
+                    "Offline account opening dependency",
+                    "Fragmented onboarding journey",
+                    "High user friction during account registration"
+                ],
+                solution: "Built a digital CASA onboarding flow with e-KYC integration and instant activation to streamline account opening.",
+                technologies: ["Miro", "Jira", "Figma", "SQL", "Postman"]
+            },
+            {
+                title: "CASA Account Creation",
+                date: "jan-mar '24",
+                category: "Acquisition",
+                description: "Enabled seamless CASA account creation within the post-disbursement process at branch.",
+                image: "project-images/CASAAccountCreation.png",
+                pdf: "https://drive.google.com/file/d/1kSw-95vqwBvQBwRs-is9c-AL4ycI_KnW/preview",
+                year: "2024",
+                initiative: "Adira Finance",
+                duration: "3 months",
+                role: "Product Manager",
+                overview: "Enabled seamless CASA account creation within the post-disbursement process at Adira branch.",
+                challenge: [
+                    "Low CASA account utilization",
+                    "Low adoption of digital banking services",
+                ],
+                solution: "Integrated automated CASA account creation into the post-disbursement flow to increase account utilization and drive digital adoption",
+                technologies: ["Miro", "Jira", "Figma", "SQL", "Postman"]
+            },
+            {
+                title: "Banking as a Service (Payment)",
+                date: "jun-nov '23",
+                category: "Payments",
+                description: "Integrated Danamon banking systems to enable seamless account linkage and payments within the adiraku app.",
+                image: "project-images/BankingasaService.png",
+                pdf: "https://drive.google.com/file/d/1dUd1dW644xQ71aEHxf2g3uYlryzk7g3Z/preview",
+                year: "2023",
+                initiative: "Adira Finance",
+                duration: "6 months",
+                role: "Product Manager",
+                overview: "Integrated Danamon banking systems to enable seamless account linkage and payments within the adiraku app.",
+                challenge: [
+                    "Fragmented cross-platform user experience",
+                    "Limited installment payment accessibility"
+                ],
+                solution: "Implemented account linkage and real-time installment payments through secure banking API integration",
+                technologies: ["Miro", "Jira", "Figma", "SQL", "Postman"]
+            },
+        ];
+
+        function renderProjects(filter = 'all') {
+            const grid = document.getElementById('projectsGrid');
+            grid.innerHTML = '';
+
+            const filteredProjects = filter === 'all'
+                ? projects
+                : projects.filter(p => p.category === filter);
+
+            // Keep reference for modal navigation
+            _modalProjects = filteredProjects;
+
+            filteredProjects.forEach((project, index) => {
+                const card = document.createElement('div');
+                card.className = 'project-card';
+
+                card.onclick = function () {
+                    console.log('Project clicked:', project.title);
+                    console.log('Category:', project.category);
+                    console.log('Timestamp:', new Date().toISOString());
+
+                    openPortfolioModal(project, index, filteredProjects);
+                };
+
+                card.innerHTML = `
+                    <div class="project-image">
+                        ${project.image ? `<img src="${project.image}" alt="${project.title}">` : ''}
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">${project.title}</h3>
+                        <p class="project-date">${project.date}</p>
+                        <p class="project-description">${project.description}</p>
+                        <div class="category-tags">
+                            <span class="category-tag">${project.category}</span>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Tab filtering
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', function () {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+
+                const filter = this.getAttribute('data-filter');
+                renderProjects(filter);
+            });
+        });
+
+        // Initial render
+        renderProjects();
+
+        // Hide projects section on page load
+        projectsSection.style.display = 'none';
+        heroSection.style.display = 'flex';
+
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const darkModeIcon = darkModeToggle.querySelector('i');
+
+        // Check for saved dark mode preference
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            document.body.classList.add('dark-mode');
+            darkModeIcon.classList.remove('fa-moon');
+            darkModeIcon.classList.add('fa-sun');
+        }
+
+        darkModeToggle.addEventListener('click', function () {
+            document.body.classList.toggle('dark-mode');
+
+            // Track dark mode toggle
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            console.log('Dark mode:', isDarkMode ? 'enabled' : 'disabled');
+            console.log('Timestamp:', new Date().toISOString());
+
+            // Send to Google Analytics
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'dark_mode_toggle', {
+                    'mode': isDarkMode ? 'dark' : 'light'
+                });
+            }
+
+            // Toggle icon
+            if (isDarkMode) {
+                darkModeIcon.classList.remove('fa-moon');
+                darkModeIcon.classList.add('fa-sun');
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                darkModeIcon.classList.remove('fa-sun');
+                darkModeIcon.classList.add('fa-moon');
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+
+    </script>
+
+    <!-- ── Portfolio Modal ── -->
+    <div id="portfolioModalOverlay" class="portfolio-modal-overlay">
+        <div class="portfolio-modal">
+            <div class="portfolio-modal-header">
+                <div class="portfolio-modal-header-left">
+                    <button class="modal-back-btn" id="modalBackBtn" onclick="showOverviewView()"
+                        title="Back to overview">
+                        <i class="fa fa-chevron-left"></i>
+                    </button>
+                    <span class="portfolio-modal-title" id="modalTitle">Project Title</span>
+                    <span class="portfolio-modal-category" id="modalCategory">Category</span>
+                </div>
+                <div class="portfolio-modal-controls">
+                    <button class="modal-nav-btn" id="modalPrevBtn" onclick="navigateModal(-1)" title="Previous">
+                        <i class="fa fa-chevron-left"></i>
+                    </button>
+                    <span class="modal-nav-counter" id="modalCounter">1 / 1</span>
+                    <button class="modal-nav-btn" id="modalNextBtn" onclick="navigateModal(1)" title="Next">
+                        <i class="fa fa-chevron-right"></i>
+                    </button>
+                    <button class="modal-close-btn" onclick="closePortfolioModal()" title="Close">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="portfolio-modal-body">
+                <!-- Overview View -->
+                <div class="modal-overview-view" id="modalOverviewView">
+                    <div class="modal-overview-main" id="modalOverviewMain"></div>
+                    <div class="modal-overview-sidebar" id="modalOverviewSidebar"></div>
+                </div>
+                <!-- Iframe View (hidden until CTA clicked) -->
+                <div id="modalIframeView" style="display:none; width:100%; height:100%;">
+                    <div class="portfolio-modal-loading" id="modalLoading">
+                        <div class="modal-spinner"></div>
+                        <p style="color:#999; font-size:13px; font-family:'Poppins',sans-serif;">Loading document...</p>
+                    </div>
+                    <iframe class="portfolio-modal-iframe" id="portfolioIframe" src="" title="Portfolio View"
+                        allow="fullscreen" onload="hideModalLoading()"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ── Portfolio Modal Logic ──
+        let _modalProjects = [];
+        let _modalIndex = 0;
+
+        function slugify(str) {
+            return str.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+        }
+
+        function hideModalLoading() {
+            const loading = document.getElementById('modalLoading');
+            if (loading) loading.style.display = 'none';
+        }
+
+        // Store root path on load before any pushState changes it
+        const _rootPath = window.location.pathname + window.location.search;
+
+        function safeUpdateUrl(slug) {
+            try {
+                if (window.location.protocol === 'http:' || window.location.protocol === 'https:') {
+                    history.pushState({ modalSlug: slug }, '', '/' + slug);
+                } else {
+                    history.pushState({ modalSlug: slug }, '', '#' + slug);
+                }
+            } catch (e) { /* URL update is cosmetic — never let it block the modal */ }
+        }
+
+        function renderOverviewContent(project) {
+            const main = document.getElementById('modalOverviewMain');
+            const sidebar = document.getElementById('modalOverviewSidebar');
+
+            // Split challenge text into sentences for bullet points
+            const challengeRaw = project.challenge || 'Details available in the project document.';
+
+            // Normalize into array
+            const challengeItems = Array.isArray(challengeRaw)
+                ? challengeRaw
+                : (challengeRaw.match(/[^.!?]+[.!?]+/g) || [challengeRaw]);
+
+            const challengeIcons = ['fa-circle-exclamation', 'fa-circle-exclamation', 'fa-circle-exclamation'];
+            const challengeIconClasses = ['warning'];
+            // const challengeIconClasses = ['warning', 'sync', 'shield'];
+
+            const challengeItemsHtml = challengeItems.map((sentence, i) => {
+                const iconClass = challengeIcons[i % challengeIcons.length];
+                const iconType = challengeIconClasses[i % challengeIconClasses.length];
+
+                return `<div class="modal-challenge-item">
+                    <div class="challenge-icon ${iconType}">
+                        <i class="fa-solid ${iconClass}"></i>
+                    </div>
+                    <p>${sentence.trim()}</p>
+                </div>`;
+            }).join('');
+
+            // Build technologies HTML
+            const techHtml = (project.technologies || []).map(t =>
+                `<span class="modal-tech-tag">${t}</span>`
+            ).join('');
+
+            // Build solution text for sidebar card
+            const solutionText = project.solution || 'Details available in the project document.';
+
+            main.innerHTML = `
+                <h3>Overview</h3>
+                <p>${project.overview || project.description}</p>
+
+                <div class="modal-challenge-card">
+                    <h3>Challenge</h3>
+                    ${challengeItemsHtml}
+                </div>
+
+                <div class="modal-tech-section" style="margin-top: 32px;">
+                    <h3>Tech Stack</h3>
+                    <div class="modal-tech-tags">${techHtml || '<span class="modal-tech-tag">—</span>'}</div>
+                </div>
+            `;
+
+            sidebar.innerHTML = `
+                <div class="modal-solution-label">Solution</div>
+
+                <div class="modal-solution-card">
+                    <p>${solutionText}</p>
+                </div>
+
+
+                <div class="modal-solution-label">Project Details</div>
+                
+                <div class="modal-meta-card">
+                    <div class="modal-meta-grid">
+                        <div class="modal-meta-row">
+                            <div class="modal-meta-label">Year</div>
+                            <div class="modal-meta-value">${project.year || project.date}</div>
+                        </div>
+                        <div class="modal-meta-row">
+                            <div class="modal-meta-label">Duration</div>
+                            <div class="modal-meta-value">${project.duration || '—'}</div>
+                        </div>
+                        <div class="modal-meta-row">
+                            <div class="modal-meta-label">initiative</div>
+                            <div class="modal-meta-value">${project.initiative || '—'}</div>
+                        </div>
+                        <div class="modal-meta-row">
+                            <div class="modal-meta-label">Role</div>
+                            <div class="modal-meta-value">${project.role || '—'}</div>
+                        </div>
+                    </div>
+                </div>
+
+                
+            `;
+        }
+
+                // <button class="modal-cta-btn" onclick="showDocumentView()">
+                //     <i class="fa fa-external-link-alt"></i> View Document
+                // </button>
+
+        function showOverviewView() {
+            document.getElementById('modalOverviewView').style.display = 'grid';
+            document.getElementById('modalIframeView').style.display = 'none';
+            document.getElementById('modalBackBtn').style.display = 'none';
+            // Stop iframe loading
+            document.getElementById('portfolioIframe').src = '';
+        }
+
+        // function showDocumentView() {
+        //     const project = _modalProjects[_modalIndex];
+        //     const url = project.portfolioUrl || project.pdf || '';
+        //     const iframe = document.getElementById('portfolioIframe');
+        //     const loading = document.getElementById('modalLoading');
+
+        //     document.getElementById('modalOverviewView').style.display = 'none';
+        //     document.getElementById('modalIframeView').style.display = 'block';
+        //     document.getElementById('modalBackBtn').style.display = 'flex';
+
+        //     loading.style.display = 'flex';
+        //     iframe.src = '';
+        //     if (url) {
+        //         setTimeout(() => { iframe.src = url; }, 80);
+        //     } else {
+        //         loading.innerHTML = '<p style="color:#999;font-size:14px;font-family:Poppins,sans-serif;">No document available for this project.</p>';
+        //     }
+        // }
+
+        function openPortfolioModal(project, index, projectList) {
+            _modalProjects = projectList || _modalProjects;
+            _modalIndex = index;
+
+            const overlay = document.getElementById('portfolioModalOverlay');
+
+            // Header
+            document.getElementById('modalTitle').textContent = project.title;
+            document.getElementById('modalCategory').textContent = project.category;
+            document.getElementById('modalCounter').textContent = `${_modalIndex + 1} / ${_modalProjects.length}`;
+
+            // Render overview content
+            renderOverviewContent(project);
+
+            // Always start with overview view
+            showOverviewView();
+
+            // Show modal
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            // Update URL
+            safeUpdateUrl(slugify(project.title));
+
+            // GA
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'project_clicked', {
+                    'project_clicked': project.title,
+                    'project_category': project.category
+                });
+            }
+        }
+
+        function closePortfolioModal() {
+            const overlay = document.getElementById('portfolioModalOverlay');
+            const iframe = document.getElementById('portfolioIframe');
+            overlay.classList.remove('active');
+            setTimeout(() => { iframe.src = ''; }, 200);
+            document.body.style.overflow = '';
+            try { history.pushState({}, '', _rootPath); } catch (e) { }
+        }
+
+        function navigateModal(direction) {
+            _modalIndex = (_modalIndex + direction + _modalProjects.length) % _modalProjects.length;
+            const project = _modalProjects[_modalIndex];
+
+            document.getElementById('modalTitle').textContent = project.title;
+            document.getElementById('modalCategory').textContent = project.category;
+            document.getElementById('modalCounter').textContent = `${_modalIndex + 1} / ${_modalProjects.length}`;
+
+            // Re-render overview and show overview view
+            renderOverviewContent(project);
+            showOverviewView();
+
+            safeUpdateUrl(slugify(project.title));
+        }
+
+        // Close on backdrop click
+        document.getElementById('portfolioModalOverlay').addEventListener('click', function (e) {
+            if (e.target === this) closePortfolioModal();
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function (e) {
+            const overlay = document.getElementById('portfolioModalOverlay');
+            if (!overlay.classList.contains('active')) return;
+            if (e.key === 'Escape') closePortfolioModal();
+            if (e.key === 'ArrowLeft') navigateModal(-1);
+            if (e.key === 'ArrowRight') navigateModal(1);
+        });
+
+        // Browser back button
+        window.addEventListener('popstate', function () {
+            const overlay = document.getElementById('portfolioModalOverlay');
+            if (overlay.classList.contains('active')) {
+                overlay.classList.remove('active');
+                document.getElementById('portfolioIframe').src = '';
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
+
+</body>
+
+</html>
