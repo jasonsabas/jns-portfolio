@@ -637,10 +637,19 @@
             margin: 0.5rem 0 1.5rem;
         }
 
+        .hero-roles {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #3b5fc9;
+            letter-spacing: 0.02em;
+            margin: 0.25rem 0 1rem;
+        }
+
         .hero-roles .dot {
             color: #999;
-            margin: 0 0.4em;
+            margin: 0 0.35em;
             font-weight: 400;
+            font-size: 0.8em;
         }
 
         .hero-title {
@@ -941,6 +950,14 @@
 
         body.dark-mode .hero-roles .dot {
             color: #555;
+        }
+
+        @media (max-width: 600px) {
+            .hero-roles {
+                font-size: 0.8rem;
+                margin: 0.2rem 0 0.75rem;
+                letter-spacing: 0.01em;
+            }
         }
 
         body.dark-mode .hero-title {
