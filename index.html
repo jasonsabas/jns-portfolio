@@ -628,6 +628,20 @@
             justify-content: center;
             align-items: center;
         }
+        
+        .hero-roles {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #3b5fc9; /* readable blue on light background */
+            letter-spacing: 0.03em;
+            margin: 0.5rem 0 1.5rem;
+        }
+
+        .hero-roles .dot {
+            color: #999;
+            margin: 0 0.4em;
+            font-weight: 400;
+        }
 
         .hero-title {
             font-size: 56px;
@@ -919,6 +933,14 @@
 
         body.dark-mode .hero-section {
             background: #1a1a1a;
+        }
+
+        body.dark-mode .hero-roles {
+            color: #6b93f7; /* brighter blue for dark background */
+        }
+
+        body.dark-mode .hero-roles .dot {
+            color: #555;
         }
 
         body.dark-mode .hero-title {
@@ -1742,7 +1764,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero-section">
+    <!-- <section class="hero-section">
         <!-- <p class="hero-subtitle">Product Owner</p> -->
         <h1 class="hero-title">Hi! i'm <span class="name">Jason</span> <span class="float">🚀</span></h1>
         <p class="hero-description">
@@ -1751,7 +1773,19 @@
             journey optimization.
         </p>
         <button class="cta-button">View Projects</button>
+    </section> -->
+
+    <section class="hero-section">
+        <!-- <p class="hero-subtitle">Product Owner</p> -->
+        <h1 class="hero-title">Hi! i'm <span class="name">Jason</span> <span class="float">🚀</span></h1>
+        <h3 class="hero-roles">Product Owner <span class="dot">•</span> Product Manager <span class="dot">•</span> Project Specialist</h3>
+        <p class="hero-description">
+            Focused on delivering results across business and product initiatives through data-driven insights, 
+            AI integration (Artificial Intelligence), go-to-market strategy, and end-to-end customer journey optimization.
+        </p>
+        <button class="cta-button">View Projects</button>
     </section>
+
 
     <!-- Main Content -->
     <main class="main-content">
