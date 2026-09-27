@@ -1785,7 +1785,7 @@
     <section class="hero-section">
         <!-- <p class="hero-subtitle">Product Owner</p> -->
         <h1 class="hero-title">Hi! i'm <span class="name">Jason</span> <span class="float">🚀</span></h1>
-        <h3 class="hero-roles">Product Owner <span class="dot">•</span> Product Manager <span class="dot">•</span> Project Specialist</h3>
+        <h3 class="hero-roles">Product Manager <span class="dot">•</span> Product Owner <span class="dot">•</span> Project Specialist</h3>
         <p class="hero-description">
             Focused on delivering results across business and product initiatives through data-driven insights, 
             AI integration (Artificial Intelligence), go-to-market strategy, and end-to-end customer journey optimization.
@@ -1824,7 +1824,7 @@
                 <div class="timeline">
                     <div class="timeline-item">
                         <div class="timeline-left">
-                            <h3 class="timeline-company">Bank OCBC Indonesia</h3>
+                            <h3 class="timeline-company">OCBC Indonesia</h3>
                             <p class="timeline-date">Aug'26 - Now</p>
                         </div>
                         <div class="timeline-connector">
@@ -2049,12 +2049,12 @@
                             </div>
                             <p>DataDog</p>
                         </div>
-                        <!-- <div class="tech-item">
+                        <div class="tech-item">
                             <div class="tech-icon">
                                 <img src="tools-images/mixpanel.png" alt="Mixpanel">
                             </div>
                             <p>Mixpanel</p>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
                 
@@ -2436,17 +2436,82 @@
 
         // // Projects data v1
         const projects = [
-            // Customer Journey Analytics
-            // Implemented Mixpanel tracking across key app journey steps to capture customer behavior and journey performance.
-
-            // Centralized Data Management
-            // Centralized data maintenance through the admin portal to simplify processes and improve operational efficiency.
-
-            // Acquisition Flag Optimization
-            // Optimized acquisition flagging to improve lead classification and support more accurate customer acquisition tracking.
-
-            // Simplified Credit Submission
-            // Simplified the credit submission journey by removing an unnecessary UI step to reduce customer friction.
+            {
+                title: "Customer Journey Analytics",
+                date: "july-aug '26",
+                category: "Acquisition",
+                description: "Implemented Mixpanel tracking across key app journey steps to capture customer behavior and journey performance.",
+                image: "project-images/CustomerJourneyAnalytics.png",
+                pdf: "",
+                year: "2026",
+                initiative: "Adira Finance",
+                duration: "2 months",
+                role: "Product Owner",
+                overview: "Implemented Mixpanel tracking across key app journey steps to capture customer behavior and journey performance.",
+                challenge: [
+                    "Limited visibility into customer behavior across app journey steps",
+                    "Difficult to identify journey drop-offs and usage patterns",
+                ],
+                solution: "Implemented Mixpanel tracking across key journey steps to capture customer behavior and journey performance.",
+                technologies: ["Mixpanel", "Jira", "Metabase", "Confluence"]
+            },
+            {
+                title: "Centralized Data Management",
+                date: "june-july '26",
+                category: "Operations",
+                description: "Centralized data maintenance through the admin portal to simplify processes and improve operational efficiency.",
+                image: "project-images/CentralizedDataManagement.png",
+                pdf: "",
+                year: "2026",
+                initiative: "Adira Finance",
+                duration: "2 months",
+                role: "Product Owner",
+                overview: "Centralized data maintenance through the admin portal to simplify processes and improve operational efficiency.",
+                challenge: [
+                    "Data maintenance required multiple manual processes",
+                    "Operational updates were less efficient and centralized",
+                ],
+                solution: "Centralized data maintenance through the admin portal to simplify processes and improve operational efficiency.",
+                technologies: ["Jira", "Figma", "DBeaver", , "Postman", "Metabase"]
+            },
+            {
+                title: "Acquisition Flag Optimization",
+                date: "may-june '26",
+                category: "Acquisition",
+                description: "Optimized whitelist acquisition flag in Danadira App to enhance customer acquisition analytics.",
+                image: "project-images/AcquisitionFlagOptimization.png",
+                pdf: "",
+                year: "2026",
+                initiative: "Adira Finance",
+                duration: "2 months",
+                role: "Product Owner",
+                overview: "Optimized whitelist acquisition flag in Danadira App to enhance customer acquisition analytics.",
+                challenge: [
+                    "Inconsistent acquisition flag classification",
+                    "Limited accuracy in tracking customer acquisition sources",
+                ],
+                solution: "Optimized acquisition flagging to improve lead classification and acquisition tracking accuracy.",
+                technologies: ["Mixpanel", "Postman", "DBeaver", "Jira"]
+            },
+            {
+                title: "Simplified Credit Submission",
+                date: "apr-may '26",
+                category: "Acquisition",
+                description: "Simplified the credit submission journey by removing an unnecessary UI step to reduce customer friction.",
+                image: "project-images/SimplifiedCreditSubmission.png",
+                pdf: "",
+                year: "2026",
+                initiative: "Adira Finance",
+                duration: "2 months",
+                role: "Product Owner",
+                overview: "Simplified the credit submission journey by removing an unnecessary UI step to reduce customer friction.",
+                challenge: [
+                    "An unnecessary UI step added friction to the credit submission journey",
+                    "Additional steps could impact the customer experience",
+                ],
+                solution: "Removed the unnecessary UI step to simplify the credit submission journey and reduce customer friction.",
+                technologies: ["Google Analytics", "Metabase", "Jira", "Confluence"]
+            },
             {
                 title: "Leads Submission Portal",
                 date: "mar-apr '26",
@@ -2465,7 +2530,7 @@
                 ],
                 solution: "Developed an admin portal to support bulk leads upload via Excel and enable seamless integration with telecenter systems for faster lead processing.",
                 technologies: ["Postman", "SQL", "Metabase", "Jira", "Confluence"]
-            },                
+            },       
             {
                 title: "Centralized Status Tracker",
                 date: "feb-mar '26",
